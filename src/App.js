@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import Homepage from './pages/Homepage/Homepage';
 import MoviePage from './pages/Movies/MoviePage';
 import MovieDetailPage from './pages/MovieDetail/MovieDetailPage';
-import { Route, Routes } from 'react-router-dom';
-import AppLayout from './layout/AppLayout';
 import NotFoundPage from './pages/NotFoundpage/NotFoundPage';
+import AppLayout from './layout/AppLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // 홈페이지 / 
