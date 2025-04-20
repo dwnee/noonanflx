@@ -1,7 +1,10 @@
-# Day 01
+# Day 01 (thu, 18 Apr)
 - 프로젝트 세팅하기(폴더 만들기, navbar 만들기, route 설정하기)
 - 사용 api : https://developer.themoviedb.org/
 - 리액트 부트스트랩, axios, react-query
+
+# Day 02 (sat, 19 Apr)
+- 배너 만들기기
 
 
 

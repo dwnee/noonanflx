@@ -1,0 +1,35 @@
+.banner{
+  position: relative;
+}
+.banner-bg-img {
+  height: 56vh;
+  background-repeat: no-repeat ;
+  background-position-y: 25%;
+  background-position-x: center;
+  background-size: cover;
+}
+.banner-bg-img::before{
+  content:'';
+  background:linear-gradient(to top, black, transparent);
+  position: absolute;
+  left :0;
+  height: 56vh;
+  width: 100%;
+}
+.banner-text-area{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  width: 36%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+@media (max-width: 690px){
+  .banner-text-area{
+    width: 88%;
+  }
+}
