@@ -3,9 +3,15 @@ import Badge from "react-bootstrap/Badge";
 import Stack from "react-bootstrap/Stack";
 import "./MovieCard.style.css";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
+import { useNavigate } from "react-router-dom";
+
 
 const MovieCard = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate(`/movies/${movie.id}`); 
+  };
   const showGenre = (genreIdList) => {
     if (!genreData) {
       return [];
@@ -33,7 +39,7 @@ const MovieCard = ({ movie }) => {
         </div>
       </div>
     </div> */
-    <div className="movie-card">
+    <div className="movie-card" onClick={goToDetail}>
       <div
         className="movie-card-inner"
         style={{

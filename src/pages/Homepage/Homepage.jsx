@@ -1,5 +1,7 @@
-import React from 'react'
+
+import React, {useEffect, useState, Suspense} from 'react'
 import Banner from './components/Banner/Banner'
+import Spinner from 'react-bootstrap/Spinner';
 import PopularMovieSlide from './components/PopularMovieSlide/PopularMovieSlide'
 import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide'
 import UpComingMovieSlide from './components/UpComingMovieSlide/UpComingMovieSlide'
@@ -14,10 +16,12 @@ import "../Homepage/HomePage.style.css"
 const Homepage = () => {
   return (
     <div>
-      <Banner/>
-      <PopularMovieSlide/>
-      <TopRatedMovieSlide/>
-      <UpComingMovieSlide/>
+      <Suspense fallback={<Spinner/>}>
+        <Banner/>
+        <PopularMovieSlide/>
+        <TopRatedMovieSlide/>
+        <UpComingMovieSlide/>
+      </Suspense>
     </div>
   )
 }

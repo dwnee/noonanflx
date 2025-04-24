@@ -7,9 +7,9 @@ import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
 
 const UpComingMovieSlide = () => {
   const { data, isLoading, isError, error } = useUpComingMoviesQuery();
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
+  // if (isLoading) {
+  //   return <h1>Loading...</h1>;
+  // }
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }

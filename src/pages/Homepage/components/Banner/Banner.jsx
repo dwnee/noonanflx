@@ -7,15 +7,15 @@ import "./Banner.style.css"
 const Banner = () => {
   const {data, isLoading,isError, error } = usePopularMoviesQuery();
   console.log("Ddddd", data)
-  if(isLoading){
-    return(
-      <h1>
-          <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-    </h1>
-    )
-  }
+  // if(isLoading){
+  //   return(
+  //     <h1>
+  //         <Spinner animation="border" role="status">
+  //     <span className="visually-hidden">Loading...</span>
+  //   </Spinner>
+  //   </h1>
+  //   )
+  // }
   if(isError){
     return(
       <Alert variant="danger">{error.message}</Alert>
