@@ -16,7 +16,16 @@ import "../Homepage/HomePage.style.css"
 const Homepage = () => {
   return (
     <div>
-      <Suspense fallback={<Spinner/>}>
+      <Suspense fallback={    <div
+            style={{
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Spinner animation="border" variant="danger" />
+          </div>}>
         <Banner/>
         <PopularMovieSlide/>
         <TopRatedMovieSlide/>

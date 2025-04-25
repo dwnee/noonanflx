@@ -1,0 +1,28 @@
+.spinner-area{
+  display: flex;
+  align-items: center;justify-content: center;
+}
+.dropdowns{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: fit-content;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.cards-section{
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.cards{
+  padding: 0;
+  margin: 0;
+  /* border: 8px solid beige; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+}
