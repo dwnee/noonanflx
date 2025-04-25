@@ -163,6 +163,7 @@ const MovieDetailPage = () => {
             {recommendedMovies.map((movie) => (
               <Col
                 key={movie.id}
+                lg={3}
                 xs={6} // 모바일에서 2개씩 보이도록 설정
                 // className="p-1"
               >
