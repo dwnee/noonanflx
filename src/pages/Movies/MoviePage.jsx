@@ -25,14 +25,16 @@ const MoviePage = () => {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const { data: genres } = useMovieGenreQuery();
   const keyword = query.get("q");
-
+// 
   useEffect(() => {
     setPage(1);
   }, [keyword]);
+  // 
   const { data, isLoading, isError, error } = useSearchMovieQuery({
     keyword,
     page,
     genre: selectedGenre,
+    sortOption
   });
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
@@ -40,18 +42,26 @@ const MoviePage = () => {
   console.log("Ddd key", data);
 
   const sortedResults = [...(data?.results || [])];
+
+  // 정렬
+  if (sortOption === "popularity") {
+    sortedResults.sort((a, b) => b.popularity - a.popularity);
+  } else if (sortOption === "leastPopularity") {
+    sortedResults.sort((a, b) => a.popularity - b.popularity);
+  }
+  
+  // 장르 필터링
   // const filteredMovies = sortedResults.filter((movie) =>
   //   selectedGenre ? movie.genre_ids.includes(selectedGenre) : true
   // );
-  if (sortOption === "popularity") {
-    sortedResults.sort((a, b) => b.popularity - a.popularity); // 인기 높은 순
-  } else if (sortOption === "leastPopularity") {
-    sortedResults.sort((a, b) => a.popularity - b.popularity); // 인기 낮은 순
-  }
 
-  const filteredMovies = sortedResults.filter((movie) =>
-    selectedGenre ? movie.genre_ids.includes(selectedGenre) : true
-  );
+  const filteredMovies = data?.results || [];
+
+  const pageSize = 12; // 한 페이지에 표시할 영화 개수
+  // const pageCount = Math.ceil(filteredMovies.length / pageSize); 
+  const pageCount = data?.total_pages || 0;
+
+
   if (isLoading) {
     return (
       <div
@@ -122,30 +132,21 @@ const MoviePage = () => {
             <div>결과가 없습니다.</div>
           ) : (
             <Row className="cards">
-              {filteredMovies.map((movie, index) => (
-                <Col key={index} lg={4} xs={6} style={{"padding":0}}>
-                  <MovieCard movie={movie} />
-                </Col>
-              ))}
+              {filteredMovies
+                .map((movie, index) => (
+                  <Col key={index} lg={3} xs={6} style={{ padding: 0 }}>
+                    <MovieCard movie={movie} />
+                  </Col>
+                ))}
             </Row>
           )}
-          {sortedResults.length === 0 ? (
-            <div>결과가 없습니다.</div>
-          ) : (
-            <Row>
-              {sortedResults.map((movie, index) => (
-                <Col key={index} lg={4} xs={6} style={{"padding":0}}>
-                  <MovieCard movie={movie} />
-                </Col>
-              ))}
-            </Row>
-          )}
+          
           <ReactPaginate
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
-            pageCount={data?.total_pages} //전체 페이지
+            pageCount={pageCount} //전체 페이지
             previousLabel="< previous"
             pageClassName="page-item"
             pageLinkClassName="page-link"

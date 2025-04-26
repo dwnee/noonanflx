@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 
 const MovieCard = ({ movie }) => {
+  const defaultPoster = "https://via.placeholder.com/500x750?text=No+Image"; // 기본 이미지 URL
+  const posterPath = movie.poster_path 
+  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
+  : defaultPoster;
   const { data: genreData } = useMovieGenreQuery();
   const navigate = useNavigate();
   const goToDetail = () => {
@@ -44,9 +48,10 @@ const MovieCard = ({ movie }) => {
         className="movie-card-inner"
         style={{
           backgroundImage:
-            "url(https://image.tmdb.org/t/p/original/" +
-            movie.poster_path +
-            ")",
+          `url(${posterPath})`,
+            // "url(https://image.tmdb.org/t/p/original/" +
+            // movie.poster_path +
+            // ")",
         }}
       >
         <div className="overlay" style={{ padding: "8px" }}>
